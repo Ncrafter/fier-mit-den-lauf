@@ -1,37 +1,19 @@
-let LEDy = 0
-let LEDx = 0
-for (let index = 0; index < 10; index++) {
-    LEDx = Math.map(randint(-1023, 1023), -1023, 1023, -1023, 1023)
-    LEDy = Math.map(randint(-1023, 1023), -1023, 1023, -1023, 1023)
-    if (5 > LEDx && 5 > LEDy) {
-        basic.showLeds(`
-            # # . # #
-            # # . # #
-            . . . . .
-            # . . . #
-            # # # # #
-            `)
-        basic.setLedColor(0x00ff00)
-    } else {
-        basic.showLeds(`
-            # # . # #
-            # # . # #
-            . . . . .
-            # # # # #
-            # . . . #
-            `)
-        basic.setLedColor(0xff0000)
+input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
+    if (Schwierigkeit < 5) {
+        Schwierigkeit += 1
+        led.toggle(2, 5 - Schwierigkeit)
     }
-    basic.pause(1000)
-    basic.setLedColor(0x999999)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
-}
+})
+input.onButtonEvent(Button.B, input.buttonEventClick(), function () {
+    if (Schwierigkeit > 1) {
+        Schwierigkeit += -1
+        led.toggle(2, 4 - Schwierigkeit)
+    }
+})
+let Schwierigkeit = 0
+Schwierigkeit = 1
+let Spielstart = false
+led.plot(2, 4)
 basic.forever(function () {
 	
 })
