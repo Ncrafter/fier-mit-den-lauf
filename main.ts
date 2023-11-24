@@ -27,5 +27,16 @@ basic.forever(function () {
         led.unplot(LEDx, LEDy)
         LEDx = Math.map(input.acceleration(Dimension.X) * Schwierigkeit, -1023, 1023, 0, 4)
         LEDy = Math.map(input.acceleration(Dimension.Y) * Schwierigkeit, -1023, 1023, 0, 4)
+        led.toggle(LEDx, LEDy)
+        if (LEDy < 0 || LEDy > 4 || LEDx > 4 || LEDx < 0) {
+            basic.showLeds(`
+                # . . . #
+                . . . . .
+                . . . . .
+                # # # # #
+                # . . . #
+                `)
+            music.playMelody("C5 B A G F E D C ", 250)
+        }
     }
 })
