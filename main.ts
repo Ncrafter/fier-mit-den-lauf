@@ -43,8 +43,8 @@ basic.forever(function () {
             basic.clearScreen()
             if (Schwierigkeit == 5) {
                 if (Losecount == 10) {
-                    Spielstart = false
                     basic.clearScreen()
+                    Spielstart = false
                 }
             }
         } else {
